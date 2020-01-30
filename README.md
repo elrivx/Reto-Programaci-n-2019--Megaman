@@ -27,4 +27,4 @@ Se han usado para su realización:
 - [x] Cargar todo en el canvas
 - Botones:
 	- [x] Arriba, derecha, izquierda y salto (WAD)
-	- [] Cargar bien las animaciones de barrido, muerte y disparo
+	- [x] Cargar bien las animaciones de barrido (medio), muerte y disparo (L dispara, M barrido, C muere)

@@ -109,12 +109,17 @@ class Bootloader extends Phaser.Scene {
     this.cursor_M = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.M
     );
+
+    this.cursor_C = this.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.C
+    );
   }
 
   // Aquí va el update
   update() {
     const velocity = 199;
     const altJump = 200;
+
 
     this.player.setVelocityX(0);
 
@@ -134,13 +139,11 @@ class Bootloader extends Phaser.Scene {
       this.player.body.setVelocityY(-altJump);
     }
 
-    if (this.cursor_L.isDown) {
-      this.player.anims.play("fire", true);
-    }
+
 
     if (this.cursor_M.isDown) {
       this.player.x++;
-      this.player.anims.play("dash", true);
+      this.player.flipX = false;
     }
 
     if (
@@ -153,7 +156,20 @@ class Bootloader extends Phaser.Scene {
     } else {
       this.player.anims.play("ilde", true);
     }
+    if (this.cursor_L.isDown) {
+      this.player.anims.play("fire", true);
+    }
+
+    if (this.cursor_M.isDown &&
+      this.player.body.onFloor()) {
+      this.player.anims.play("dash", true);
+    }
+    if (this.cursor_C.isDown) {
+      this.player.anims.play("death", true);
+    }
   }
+
+
 }
 
 export default Bootloader;
